@@ -1,0 +1,107 @@
+Visión a futuro (texto para el anteproyecto)
+
+1. Gestión de tráfico de sala con IA
+
+Dividir la sala de musculación en una cuadrícula de zonas, asignar el equipamiento a cada zona y leer la ocupación en tiempo real mediante sensores en las máquinas o cámaras de seguridad, para dirigir a los alumnos hacia las zonas libres y resolver cuellos de botella. Requiere un caso de uso de configuración de zonas y un campo de zona en el inventario de equipamiento. No forma parte del MVP.
+
+2. Corrección de técnica por video con IA
+
+Análisis por IA de videos del alumno para corregir la técnica de ejecución de los ejercicios. Queda fuera del alcance actual, tanto por factibilidad dentro del plazo académico como para proteger la idea.
+
+3. Integración automática con el control de acceso (molinete)
+
+Reemplazar el registro manual de ingresos por una integración con el proveedor de control de acceso del gimnasio, modelada de forma agnóstica al proveedor (el proveedor emite usuario, fecha, hora y sucursal). La integración sería bidireccional: el sistema le indica al proveedor qué alumnos están habilitados según su estado de cuota, y el molinete niega el paso a quienes están en mora. Supone que el proveedor externo soporta ese tipo de integración. En el MVP el ingreso se registra manualmente por recepción (flujo A2 de "Registrar acceso al gimnasio").
+
+4. Importación de datos desde apps y máquinas externas
+
+Importar datos biométricos y de actividad desde aplicaciones o máquinas externas, documentado dentro del caso de uso de registro manual. Un caso particular son las máquinas de bioimpedancia y otras mediciones propias de algunos gimnasios (por ejemplo, tipo Smart Fit), que podrían ser un servicio que el gimnasio ofrece a un alumno particular, cargando sus datos automáticamente. Es una integración por máquina, distinta para cada fabricante y modelo, y queda fuera del MVP.
+
+5. Red de gimnasios y profesionales independientes
+
+Visión de crecimiento a 2 o 3 años: una red donde gimnasios y PT independientes coexistan, sin ser un marketplace (no hay búsqueda pública de entrenadores desde el alumno). Incluye el caso de un PT independiente que paga un fijo a una cadena y trabaja con sus alumnos en la sede, usando su equipamiento y catálogo. Esto requiere una relación entre Organizaciones que hoy no existe. Queda pendiente definir el traspaso de un alumno entre Organizaciones (quién inicia, invitación o solicitud, consentimiento mutuo).
+Un profesional independiente podría sumarse a un gimnasio, o pertenecer a más de una Organización a la vez (por ejemplo, su propia Organización más la sede de un gimnasio donde atiende). En el MVP un profesional pertenece a una única Organización.
+
+6. Automatización y canales conversacionales
+
+Uso de una plataforma de automatización (n8n) y de canales conversacionales (Telegram Bot API, WhatsApp Business) para recordatorios de clase, confirmación de asistencia y avisos de vencimiento. Sugerido por el profesor como capa complementaria; no mapeado todavía a los casos de uso.
+
+7. Roles de cuenta
+
+Cada cuenta tiene un único rol, alumno o profesional, sin poder acumular ambos ni cambiar de uno a otro; una persona que necesite los dos roles debe usar otro email. Un profesional pertenece a una única Organización. Podría evaluarse a futuro permitir el cambio o la combinación de roles.
+
+8. Administración de plataforma
+
+Hoy el catálogo general de ejercicios, la relación entre ejercicios y equipamiento y el catálogo global de equipamiento se cargan una sola vez como datos semilla. A futuro requerirían un backoffice de administración de la plataforma para su mantenimiento.
+
+Notas sin decidir (de tu documento de CU, no son decisiones)
+
+Integración con Google Calendar para sincronizar las clases hacia el calendario del instructor.
+Integración con Meta.
+Servicio de envío de emails: SendGrid (1000 mails por día) frente a Azure.
+
+
+
+Visión a futuro
+
+Organización de tipo Gimnasio, con staff e instructores (sus CU están documentados aparte).
+Chat dentro de la rutina (CU14).
+App nativa (hoy es web responsive o PWA).
+Corrección por IA (CU17): audio en vivo mientras se hace el ejercicio, iniciarla fuera de una sesión, guardar video y resultado, que el PT revise y comente, lectura en audio.
+Sincronización con calendario por conexión directa (OAuth) en lugar del enlace iCal.
+Pago online: que el PT genere un link o QR para compartir.
+
+Casos borde asumidos
+
+Alumno con dos PT: los datos biométricos quedan separados por Organización (CU23).
+Dos sesiones el mismo día, o sesión registrada pasada la medianoche: la asistencia automática se resuelve por fecha exacta y la primera sin marcar (CU18).
+Peso real distinto al precargado: solo se refleja en la nota (CU16 y progresión CU26).
+Ejercicio propio eliminado: las rutinas ya armadas lo conservan (CU13).
+Cuota por sesión: sin día de vencimiento (CU21).
+
+Pendientes abiertos que no son visión
+
+CU19 (calendario externo): falta decidir el mecanismo.
+Unificar las prioridades MoSCoW, y decidir Could o Won’t en Exportar y Configurar Home.
+RG-02 (72 h) contra el documento del Gimnasio (48 h).
+Tabla de roles, índice y notas de trabajo del principio, a cerrar al final.
+Revisión legal del deslinde.
+Confirmar el modelo de cuentas de Mercado Pago en el diseño técnico.
+
+
+Los ejercicios propios no tienen corrección por IA.
+Revisar que el examen se vea en la ficha (CU10) y en próximas sesiones (CU20).
+El requisito de privacidad por los datos que se envían a servicios externos de IA (video del CU17 y contexto del alumno del CU15).
+
+
+Visión a futuro, casos borde y pendientes — Anteproyecto PT (AP-ATI)
+
+Registro de trabajo mantenido durante la corrección de los casos de uso del PT (numeración final de 30 CU). Actualizado al 13/10/2026, hasta CU26.
+
+Visión a futuro (fuera del MVP)
+Organización de tipo Gimnasio, con staff e instructores (sus CU están documentados aparte).
+Chat dentro de la rutina (CU14).
+App nativa (hoy: web responsive o PWA primero).
+Corrección por IA con video (CU17): audio en vivo mientras se hace el ejercicio; iniciarla fuera de una sesión (desde una sección aparte); guardar video y resultado; que el PT revise y comente (implica guardar video y más consentimientos); lectura en audio de las correcciones.
+Sincronización con calendario externo por conexión directa (OAuth) en lugar de enlace iCal (CU19, mecanismo aún por decidir).
+Pago online (CU22): que el PT genere un link o QR para compartir con el alumno.
+Registro de sesión (CU16): que el sistema interprete las notas del alumno (por ejemplo, un cambio de peso o de repeticiones) y actualice automáticamente el registro, sin que el PT lo corrija a mano.
+Casos borde asumidos
+Alumno con dos PT: los datos biométricos quedan separados por Organización y no se amplía RG-04 (CU23).
+Dos sesiones el mismo día, o sesión registrada pasada la medianoche: la asistencia automática se resuelve por fecha exacta y la primera sesión sin marcar (CU18).
+Peso o repeticiones reales distintos a los precargados: el alumno solo marca series completadas (puede dejar una nota); el PT corrige el peso o las repeticiones reales a mano después, desde el resumen de la sesión (CU16, A3), con historial de cambios (RG-05). La progresión (CU26) muestra el peso corregido, o el programado si no se corrigió.
+Ejercicio propio eliminado: las rutinas ya armadas lo conservan (CU13).
+Cuota por sesión: sin día de vencimiento, con comprobante igual (CU21).
+Ejercicios propios: no tienen corrección por IA (solo los de la lista general, CU17).
+Pendientes abiertos (no son visión)
+CU19 (calendario externo): falta decidir el mecanismo (opciones: conexión directa OAuth, enlace de suscripción iCal, agregar sesión por sesión; recomendación: iCal).
+Unificar prioridades a MoSCoW (Must / Should / Could / Won't); decidir Could o Won't en Exportar mis datos y Configurar Home.
+RG-02: 72 horas en PT contra 48 horas en el documento del Gimnasio.
+Tabla de roles, índice y notas de trabajo del principio del documento: cerrar al final.
+Revisión legal del deslinde.
+Confirmar en el diseño técnico el modelo de cuentas de cobro de Mercado Pago (split payments con OAuth) y los estados de pago que informa.
+Agenda (CU18): el examen es un evento nuevo (evaluación física o examen médico); revisar que quede reflejado en la ficha (CU10) y en próximas sesiones (CU20).
+Material de ejercicios: el filtro y el campo "material" deben incluir máquinas (CU12, CU13, CU14).
+RNF de privacidad: el video de CU17 se envía a un servicio externo de IA (y también el contexto del alumno en CU15).
+Corregir referencias cruzadas de numeración en todos los CU y derivar RF/RNF al final.
+Derivación de RF: como CU25 (progresión biométrica) incluye también las medidas corporales extendidas de CU24, el RF de visualización de medidas extendidas se deriva desde CU25 y no desde CU24 (CU24 solo cubre su registro).
+CU26: se quitó el acceso a la progresión desde el catálogo (la progresión es de un alumno puntual).
