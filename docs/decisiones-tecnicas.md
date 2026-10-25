@@ -9,3 +9,8 @@
 **Decisión:** la API accede a Azure SQL Database mediante Entity Framework Core, con migraciones versionadas en el repositorio.
 **Alternativa descartada:** consultas SQL escritas a mano (Dapper o ADO.NET).
 **Motivo:** el anteproyecto establece que en el repositorio se versionan las migraciones de base de datos (sección 2.10.4) y que el modelo de clases se traduce en tablas (sección 2.9.2), lo que EF Core resuelve de forma nativa en el ecosistema .NET elegido (sección 2.3).
+
+## DT-03 – Lenguaje de la PWA (25/10/2026, Sprint 2, T10)
+**Decisión:** la PWA se desarrolla en React con TypeScript.
+**Alternativa descartada:** React con JavaScript.
+**Motivo:** extiende al frontend el criterio de tipado fuerte con el que se eligió .NET para un sistema que maneja datos de salud (Tabla 5), y es coherente con las convenciones del plan de calidad, que incluyen interfaces y componentes en PascalCase (sección 2.10.3). Es una tecnología nueva para el autor; su aprendizaje se incorpora a la capacitación del sprint (riesgo R1).
