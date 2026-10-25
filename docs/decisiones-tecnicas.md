@@ -19,3 +19,13 @@
 **Decisión:** el código de la PWA se organiza por funcionalidad (auth, alumnos, rutinas, agenda, pagos, home), con una carpeta compartida para los componentes comunes y un único cliente que concentra las llamadas a la API, y con rutas separadas por rol (PT y Alumno).
 **Alternativa descartada:** organización por tipo de archivo (pages, components, services).
 **Motivo:** espeja los módulos de la API definidos en el anteproyecto (Tabla 4, DT-01); el cliente único respeta que el frontend se comunique solo con la API y nunca con servicios externos (sección 2.8); las rutas por rol responden a los Home diferenciados del PT y del alumno (CU28, CU29).
+
+## DT-05 – Columna "Segundo plano" en el tablero (25/10/2026, Sprint 2)
+**Decisión:** se agrega al tablero una quinta columna, "Segundo plano", para las tareas continuas del sprint (capacitación, gestión y documentación), además de Por hacer, En curso, En prueba y Hecho.
+**Alternativa descartada:** mantener solo las cuatro columnas de la sección 2.10.1 y dejar esas tareas en Por hacer hasta el cierre.
+**Motivo:** son tareas que se realizan de forma constante durante todo el sprint; ubicarlas en En curso ocuparía el límite de dos tarjetas destinado al desarrollo, y dejarlas en Por hacer no reflejaría que están en marcha. Ajuste al marco de trabajo de la sección 2.10.1, a reflejar en el documento final.
+
+## DT-06 – Repositorios separados para backend y frontend (25/10/2026, Sprint 2)
+**Decisión:** el código se versiona en dos repositorios: gestion-gym-app-back (API .NET) y gestion-gym-app-front (PWA React), cada uno con su propio pipeline, su análisis de SonarQube y su regla de protección de main. El tablero de GitHub Projects es único y reúne los issues de ambos.
+**Alternativa descartada:** un único repositorio con la API y la PWA en carpetas separadas, como se planteó en la sección 2.10.4.
+**Motivo:** el backend y el frontend son aplicaciones independientes que se despliegan por separado; separarlos da a cada uno su propio historial, pipeline y despliegue, y prepara el producto para crecer. Cambio respecto del anteproyecto, a reflejar en la sección 2.10.4 y en el anexo de acceso al repositorio en el documento final.
