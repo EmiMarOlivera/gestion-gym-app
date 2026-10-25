@@ -14,3 +14,8 @@
 **Decisión:** la PWA se desarrolla en React con TypeScript.
 **Alternativa descartada:** React con JavaScript.
 **Motivo:** extiende al frontend el criterio de tipado fuerte con el que se eligió .NET para un sistema que maneja datos de salud (Tabla 5), y es coherente con las convenciones del plan de calidad, que incluyen interfaces y componentes en PascalCase (sección 2.10.3). Es una tecnología nueva para el autor; su aprendizaje se incorpora a la capacitación del sprint (riesgo R1).
+
+## DT-04 – Organización de la PWA (25/10/2026, Sprint 2, T10)
+**Decisión:** el código de la PWA se organiza por funcionalidad (auth, alumnos, rutinas, agenda, pagos, home), con una carpeta compartida para los componentes comunes y un único cliente que concentra las llamadas a la API, y con rutas separadas por rol (PT y Alumno).
+**Alternativa descartada:** organización por tipo de archivo (pages, components, services).
+**Motivo:** espeja los módulos de la API definidos en el anteproyecto (Tabla 4, DT-01); el cliente único respeta que el frontend se comunique solo con la API y nunca con servicios externos (sección 2.8); las rutas por rol responden a los Home diferenciados del PT y del alumno (CU28, CU29).
