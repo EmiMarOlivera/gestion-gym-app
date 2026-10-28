@@ -1,9 +1,9 @@
 # Decisiones técnicas
 
-## DT-01 – Organización interna de la API (25/10/2026, Sprint 2, T10)
-**Decisión:** un solo proyecto de API organizado por módulos (Alumnos, Rutinas, Agenda, Pagos), cada uno con sus endpoints, su lógica y sus entidades, más una parte común para el acceso a datos y las integraciones externas.
-**Alternativa descartada:** Clean Architecture en cuatro proyectos (Domain, Application, Infrastructure, Api).
-**Motivo:** sigue lo definido en el anteproyecto (Tabla 4 y sección 2.8: "una única API organizada en módulos reduce la complejidad"), reduce la estructura a mantener para un solo desarrollador y permite separar un módulo más adelante si hiciera falta.
+## DT-01 – Estructura de la API por capas (28/10/2026, Sprint 2)
+**Decisión:** la API se organiza en cuatro proyectos por capa: Domain (entidades), DataAccess (DbContext y consultas con Entity Framework Core), AppLogic (casos de uso y DTOs) y WebApi (controllers y endpoints). Dentro de cada capa, el código se agrupa por módulo (Alumnos, Rutinas, Agenda, Pagos).
+**Alternativa descartada:** un solo proyecto con carpetas por módulo.
+**Motivo:** es la arquitectura que el autor conoce de la carrera, lo que reduce el riesgo técnico en un sprint con varias tecnologías nuevas (riesgo R1), y separa con claridad las responsabilidades de cada capa. La agrupación por módulo dentro de cada capa mantiene la API organizada en módulos, como define el anteproyecto (Tabla 4 y sección 2.8).
 
 ## DT-02 – Acceso a la base de datos (25/10/2026, Sprint 2, T10)
 **Decisión:** la API accede a Azure SQL Database mediante Entity Framework Core, con migraciones versionadas en el repositorio.
